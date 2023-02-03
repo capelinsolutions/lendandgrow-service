@@ -1,0 +1,18 @@
+extend type Subscription {
+    getChatMessageNotificationData: MessageNotificationResponse
+}
+
+type MessageNotificationResponse{
+    userId: String
+    notifications: [NotificationMessage]
+    totalCount: Int
+}
+
+type NotificationMessage{
+    senderName: String
+    senderId: String
+    content: String
+    count: Int
+    sendAt: String
+    profileUrl: String
+}

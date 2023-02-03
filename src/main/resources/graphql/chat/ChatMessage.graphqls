@@ -1,0 +1,52 @@
+extend type Mutation{
+    markAllUnreadMessageToRead(senderId: String): OnlyStringResponse
+    sendMessage(data: ChatMessageInput): ChatMessageResponseWrapper
+}
+
+extend type Query {
+    getAllNotifications: ListNotificationMessage
+    getMessagesByRecipientIdAndUserIdByPagination(input : PaginatedChatInput) : MessagePaginatedChatType
+}
+
+extend type Subscription {
+    getChatMessages: ChatMessageResponse!
+    getChatMessageData(senderId: String): ChatMessageResponse!
+}
+
+type ListNotificationMessage{
+    message: String
+    code: String
+    status: Int
+    data: MessageNotificationResponse
+}
+
+type ChatMessageResponseWrapper{
+    message: String
+    code: String
+    status: Int
+    data: ChatMessageResponse
+}
+
+type ChatMessageResponse{
+    id: String
+    content: String
+    senderId: String
+    recipientId: String
+    sendAt: String
+    isRead: Boolean
+}
+
+type MessagePaginatedChatType{
+    message: String
+    code: String
+    status: Int
+    data: PaginatedChatType
+}
+
+type PaginatedChatType{
+    chatMessages: [ChatMessageResponse]
+    pageNo: Int
+    pageSize: Int
+    noOfPages: Int
+    totalRows: Int
+}

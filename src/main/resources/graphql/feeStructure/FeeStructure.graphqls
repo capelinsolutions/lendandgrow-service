@@ -1,0 +1,32 @@
+extend type Query {
+    getFeeStructure(input: String): FeeStructureMessage
+    getAllFeeStructure: ListFeeStructureMessage
+}
+
+extend type Mutation {
+    createFeeStructure(input: FeeStructureInput): FeeStructureMessage
+    deleteFeeStructure(feeStructureId : String) : FeeStructureMessage
+}
+
+type FeeStructureMessage{
+    message: String
+    code: String
+    status: Int
+    data: FeeStructureType
+}
+
+type ListFeeStructureMessage{
+    message: String
+    code: String
+    status: Int
+    data: [FeeStructureType]
+}
+
+type FeeStructureType{
+    id : String
+    to : String
+    from : String
+    text : String
+}
+
+#user: NewUserType

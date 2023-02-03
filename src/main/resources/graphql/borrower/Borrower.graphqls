@@ -1,0 +1,60 @@
+extend type Query {
+    getBorrower: BorrowerMessage
+    getBorrowerById(id: String): BorrowerMessage
+    getAllBorrower: ListBorrowerMessage
+    getBorrowerListByPagination(input: PaginatedBorrowerInput): PaginatedBorrowerMessage
+}
+
+extend type Mutation {
+    updateBorrower(input: UpdateBorrowerInput): BorrowerMessage
+    deleteBorrower: BorrowerMessage
+}
+
+type BorrowerMessage{
+    message: String
+    code: String
+    status: Int
+    data: BorrowerType
+}
+
+type ListBorrowerMessage{
+    message: String
+    code: String
+    status: Int
+    data: [BorrowerType]
+}
+
+type BorrowerType{
+    userId: String
+    email: String
+    name: String
+    address: String
+    city: String
+    zip: String
+    state: String
+    country: String
+    contact: String
+    telephone: String
+    dob: Date
+    gender: String
+    occupation: String
+    borrowerId : String
+    companyName: String
+    profileImageURL: String
+}
+
+type PaginatedBorrowerMessage{
+    message: String
+    code: String
+    status: Int
+    data: PaginatedBorrowerType
+}
+
+type PaginatedBorrowerType{
+    borrowers: [BorrowerType]
+    pageNo: Int
+    pageSize: Int
+    noOfPages: Int
+    totalRows: Int
+}
+#user: NewUserType

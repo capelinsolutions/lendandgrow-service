@@ -1,0 +1,13 @@
+# Get all user type
+query {
+    getUserTypes
+    {
+        message
+        status
+        code
+        data{
+            id
+            role
+        }
+    }
+}

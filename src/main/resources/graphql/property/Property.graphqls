@@ -1,0 +1,66 @@
+extend type Query {
+    getPropertyById(input: String): PropertyMessage
+    getAllProperty: ListPropertyMessage
+    getAllPropertyByPropertyTypeId(input: String): ListPropertyMessage
+    getAllPropertyByBorrowerId(input: String): ListPropertyMessage
+    getAllPropertyForLoggedInUser: ListPropertyMessage
+    getPropertyListByPagination(input: PaginatedPropertyInput): PaginatedPropertyMessage
+    getPropertyListByPaginationWithFilter(input: PropertyFilterDTO): PaginatedPropertyMessage
+    getTotalNoOfPropertiesOfBorrower : NoOfPropertyResponse
+}
+extend type Mutation {
+    createProperty(input: PropertyInput) : PropertyMessage
+    updateProperty(input: UpdatePropertyInput) : PropertyMessage
+}
+
+type Property{
+    propertyId: String
+    borrowerId: String
+    propertyTypeId: String
+    title: String
+    description: String
+    price: Float
+    imageUrls: [String]
+    address: String
+    area: String
+    questions: [FormResponse]
+    createdAt: Float
+    updatedAt: Float
+    active: Boolean
+}
+
+type PropertyMessage{
+    status: Int
+    code: String
+    message: String
+    data: Property
+}
+
+type NoOfPropertyResponse{
+    status: Int
+    code: String
+    message: String
+    data: Int
+}
+
+type ListPropertyMessage{
+    status: Int
+    code: String
+    message: String
+    data: [Property]
+}
+
+type PaginatedPropertyMessage{
+    message: String
+    code: String
+    status: Int
+    data: PaginatedPropertyType
+}
+
+type PaginatedPropertyType{
+    property: [Property]
+    pageNo: Int
+    pageSize: Int
+    noOfPages: Int
+    totalRows: Int
+}

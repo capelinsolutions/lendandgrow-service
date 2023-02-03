@@ -1,0 +1,3 @@
+extend type Mutation{
+    testMultiFilesUpload(files: [Upload!]!): ID!
+}

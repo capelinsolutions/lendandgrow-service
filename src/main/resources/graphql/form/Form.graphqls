@@ -1,0 +1,55 @@
+extend type Query {
+    getAllForm: ListFormMessage
+    getAllFormByPropertyTypeId(input: String) : ListFormMessage
+    getAllFormByListOfId : ListGetFormResponse
+    getFormsByListOfForms(input: [String]) : ListGetFormResponse
+}
+
+extend type Mutation {
+    createForm(input: FormInput): FormMessage
+}
+
+type FormMessage {
+    status: Int
+    code: String
+    message: String
+    data: FormResponse
+}
+
+type ListFormMessage {
+    status: Int
+    code: String
+    message: String
+    data: [FormResponse]
+}
+
+type FormResponse{
+    id: ID!
+    type: String!
+    label: String!
+    inputType: String
+    name: String!
+    validations: [ValidationOutput]
+    propertyTypeId: String
+    options: [String]
+    value: String
+    isSelected: Boolean
+}
+
+type ValidationOutput{
+    name: String
+    validator: String
+    message: String
+}
+
+type ListGetFormResponse {
+    status: Int
+    code: String
+    message: String
+    data: [GetFormResponse]
+}
+
+type GetFormResponse{
+    propertyType: PropertyType
+    forms :[FormResponse]
+}

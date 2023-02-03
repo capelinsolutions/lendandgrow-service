@@ -1,0 +1,30 @@
+input UpdateInvestorInput {
+    investorId: String!
+    userId: String!
+    name: String!
+    email: String
+    address: String
+    city: String
+    zip: String
+    state: String
+    country: String
+    contact: String
+    telephone: String
+    dob: String
+    gender: String
+    occupation: String
+    companyName: String
+    about: String
+    additionalLanguage: String
+    feeStructureId: String
+    questions: [String]
+}
+
+input PaginatedInvestorInput{
+    name: String
+    state: String
+    city: String
+    feeStructureId: String
+    pageSize: Int!
+    pageNo: Int!
+}

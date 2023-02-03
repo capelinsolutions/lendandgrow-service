@@ -1,0 +1,5 @@
+input PropertyTypeInput{
+    title: String
+    description: String
+    iconUrl: String
+}

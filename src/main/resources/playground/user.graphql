@@ -1,0 +1,42 @@
+# Process registration
+mutation CREATE_USER {
+    createUser (input: {
+        name: "Qasim Ali"
+        password: "Zuhair123"
+        email: "balti22@mailinator.com"
+        userType: "62129e6f7596dc5d3251fc6b"
+        city: "Karachi"
+        country: "Pakistaan"
+        address: "St#12"
+    }
+    ) {
+        message
+        code
+        status
+        data {
+            userId
+            email
+            isActive
+            userType
+        }
+    }
+}
+
+# Verify OTP for registration
+mutation RESEND_OTP  {
+    resendOtp(userId: "630c73a8831a313800eb5397"){
+        status
+        code
+        message
+        data
+    }
+}
+
+# Resend OTP on registration
+mutation VERIFY_OTP {
+    verifyOtp(email: "balti22@mailinator.com", otpValue:"254391"){
+        status
+        code
+        message
+    }
+}

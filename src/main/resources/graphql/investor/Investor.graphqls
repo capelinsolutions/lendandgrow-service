@@ -1,0 +1,66 @@
+extend type Query {
+    getInvestor: InvestorMessage
+    getInvestorById(id: String): InvestorMessage
+    getAllInvestor: ListInvestorMessage
+    getInvestorListByPagination(input: PaginatedInvestorInput): PaginatedInvestorMessage
+}
+
+extend type Mutation {
+    deleteInvestor: InvestorMessage
+    updateInvestor(input : UpdateInvestorInput) : InvestorMessage
+}
+
+type ListInvestorMessage{
+    message: String
+    code: String
+    status: Int
+    data: [InvestorType]
+}
+
+type InvestorMessage{
+    message: String
+    code: String
+    status: Int
+    data: InvestorType
+}
+
+type InvestorType{
+    investorId : String
+    userId: String
+    email: String
+    name: String
+    dob: Date
+    address: String
+    city: String
+    zip: String
+    state: String
+    country: String
+    contact: String
+    telephone: String
+    gender: String
+    occupation: String
+    about: String
+    companyName: String
+    serialNo: String
+    additionalLanguage: String
+    feeStructureId: String
+    profileImageURL: String
+    questions: [String]
+}
+
+type PaginatedInvestorMessage{
+    message: String
+    status: String
+    code: String
+    data: PaginatedInvestorType
+}
+
+type PaginatedInvestorType{
+    investors: [InvestorType]
+    pageNo: Int
+    pageSize: Int
+    noOfPages: Int
+    totalRows: Int
+}
+
+#user: NewUserType

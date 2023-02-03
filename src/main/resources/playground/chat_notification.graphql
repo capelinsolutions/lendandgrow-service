@@ -1,0 +1,15 @@
+# GET Notification
+
+subscription{
+    getChatMessageNotificationData{
+        notifications{
+            senderName
+            senderId
+            content
+            count
+            sendAt
+            profileUrl
+        }
+        totalCount
+    }
+}

@@ -1,0 +1,22 @@
+input SharedFileInput{
+    propertyId: String
+    emailsDocumentAccess: [EmailsDocumentAccessInput]
+    createdAt: Float
+    updatedAt: Float
+}
+
+input DocumentAccessInput{
+    documentUrl: String
+    accessType: [String]
+}
+
+input EmailsDocumentAccessInput{
+    email: String
+    documentAccess: [DocumentAccessInput]
+}
+
+input UpdateSharedFileInput{
+    sharedFileId: String
+    propertyId: String
+    emailsDocumentAccess: [EmailsDocumentAccessInput]
+}

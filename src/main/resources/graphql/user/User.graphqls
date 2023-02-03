@@ -1,0 +1,64 @@
+extend type Query{
+    getUserTypes: ListMessageType
+    getUser: User
+    loadByUsername: UserMessage
+    getProfileImageUrlByUserId(input: String) : OnlyStringResponse
+}
+
+extend type Mutation {
+    createUser(input: UserInput) : UserMessage
+    createUserType(role: String) : UserTypeMessage
+    verifyOtp(email: String, otpValue: String) : UserMessage
+    resendOtp(userId: String): OnlyStringResponse
+}
+
+type OnlyStringResponse{
+    message: String
+    code: String
+    status: Int
+    data: String
+}
+
+type UserMessage{
+    message: String
+    code: String
+    status: Int
+    data: User
+}
+
+type UserTypeMessage{
+    message: String
+    code: String
+    status: Int
+    data: UserType
+}
+
+type User{
+    userId: String
+    email: String
+    name: String
+    country: String
+    city: String
+    address: String
+    contact: String
+    isVerified: Boolean
+    isActive: Boolean
+    userType: String
+}
+
+type UserType{
+    id: String
+    role: String
+}
+
+type UserTypeDTO{
+    id: String
+    role: String
+}
+
+type ListMessageType{
+    message: String
+    code: String
+    status: Int
+    data: [UserTypeDTO]
+}

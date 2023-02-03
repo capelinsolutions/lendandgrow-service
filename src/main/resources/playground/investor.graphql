@@ -1,0 +1,149 @@
+
+# Update investor by dto
+mutation UPDATE_INVESTOR{
+    updateInvestor(input:
+    {
+        investorId: "62ce94db46f95307878cf8df"
+        userId: "62ce94db46f95307878cf8de"
+        name: "Shifali Kalraaaa"
+        address: "Karachi"
+        city: "Karachii"
+        zip: "76500"
+        state: "Sindh"
+        country: "Pakistan"
+        contact: "0300"
+        telephone: "not provided"
+        dob: "2022-12-12"
+        gender: "Femalei"
+        occupation: "SE1i"
+        companyName: "VinnCorpi"
+        additionalLanguage: "Sindhii"
+        feeStructureId: null
+        questions: null
+        about: "This is an investor"
+    })
+    {
+        message
+        code
+        status
+        data{
+            investorId
+            userId
+            email
+            name
+            dob
+            address
+            city
+            zip
+            state
+            country
+            contact
+            telephone
+            gender
+            occupation
+            about
+            companyName
+            serialNo
+            additionalLanguage
+            feeStructureId
+            profileImageURL
+            questions
+        }
+    }
+}
+
+# Get all investors
+query GET_ALL_INVESTOR{
+    getAllInvestor{
+        message
+        code
+        status
+        data{
+            name
+            address
+            city
+            zip
+            country
+            state
+        }
+    }
+}
+
+# Get investor by id
+query GET_INVESTOR{
+    getInvestor
+    {
+        message
+        code
+        status
+        data{
+            investorId
+            userId
+            email
+            name
+            dob
+            address
+            city
+            zip
+            state
+            country
+            contact
+            telephone
+            gender
+            occupation
+            about
+            companyName
+            serialNo
+            additionalLanguage
+            feeStructureId
+            profileImageURL
+            questions
+        }
+    }
+}
+
+# Get investor by filtrations
+query GET_INVESTOR_LIST_BY_PAGINATION{
+    getInvestorListByPagination(input: {
+        name: null
+        state: "Sindh"
+        city: null
+        feeStructureId: null
+        pageNo: 0
+        pageSize: 5
+    })
+    {
+        message
+        status
+        code
+        data{
+            investors{
+                investorId
+                userId
+                email
+                name
+                dob
+                address
+                city
+                zip
+                state
+                country
+                contact
+                telephone
+                gender
+                occupation
+                about
+                companyName
+                serialNo
+                additionalLanguage
+                feeStructureId
+                profileImageURL
+                questions
+            }
+            pageNo
+            pageSize
+            noOfPages
+            totalRows
+        }
+    }
+}

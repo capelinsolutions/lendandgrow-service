@@ -1,0 +1,45 @@
+extend type Query {
+    getSharedFileById(input : String) : SharedFileMessage
+    getAllSharedFile : ListSharedFileMessage
+    getAllSharedFileByUserEmail(input : String) : ListSharedFileMessage
+    getSharedFileByPropertyId(input : String) : SharedFileMessage
+    getSharedFileByInvestorEmailAndPropertyId(input : String) : SharedFileMessage
+}
+
+extend type Mutation {
+    createSharedFile(input : SharedFileInput ) : SharedFileMessage
+    updateSharedFile(input : UpdateSharedFileInput) : SharedFileMessage
+}
+
+type SharedFile{
+    sharedFileId: String
+    property: Property
+    emailsDocumentAccess: [EmailsDocumentAccessDTO]
+    createdAt: Float
+    updatedAt: Float
+}
+
+type EmailsDocumentAccessDTO{
+    email: String
+    documentAccess: [DocumentAccessDTO]
+}
+
+type DocumentAccessDTO{
+    documentUrl: String
+    accessType: [String]
+}
+
+type SharedFileMessage{
+    status: Int
+    code: String
+    message: String
+    data: SharedFile
+}
+
+type ListSharedFileMessage{
+    status: Int
+    code: String
+    message: String
+    data: [SharedFile]
+}
+

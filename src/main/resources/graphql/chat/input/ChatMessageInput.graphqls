@@ -1,0 +1,11 @@
+input ChatMessageInput{
+    recipientId: String
+    content: String
+}
+
+input PaginatedChatInput{
+    senderId: String
+    recipientId: String
+    pageNo: Int
+    pageSize: Int
+}

@@ -1,0 +1,41 @@
+# Get all chat history
+query GET_ALL_CHAT_HISTORY{
+    getAllChatHistory(pageNo: 0, pageSize: 5){
+        status
+        code
+        message
+        data{
+            chatHistory{
+                senderId
+                name
+                picture
+                lastMessageAt
+                recipientId
+            }
+            pageNo
+            pageSize
+            noOfPages
+            totalRows
+        }
+    }
+}
+
+# Get all contacted investors
+query GET_TOTAL_NO_OF_CONTACTED_INVESTOR{
+    getTotalNoOfContactedInvestor{
+        status
+        code
+        message
+        data
+    }
+}
+
+# Get all contacted borrower
+query GET_TOTAL_NO_OF_CONTACTED_BORROWER{
+    getTotalNoOfContactedBorrower{
+        message
+        status
+        code
+        data
+    }
+}

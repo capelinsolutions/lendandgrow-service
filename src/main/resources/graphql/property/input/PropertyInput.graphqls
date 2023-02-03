@@ -1,0 +1,66 @@
+input PropertyInput{
+    borrowerId: String
+    propertyTypeId: String
+    title: String
+    description: String
+    price: Float
+    showPrice: Boolean
+    imageUrls: [String]!
+    address: String
+    area: String
+    questions: [QuestionRequest]!
+    active: Boolean
+}
+
+input UpdatePropertyInput{
+    propertyId: String
+    borrowerId: String
+    propertyTypeId: String
+    title: String
+    description: String
+    price: Float
+    showPrice: Boolean
+    imageUrls: [String]!
+    address: String
+    area: String
+    questions: [QuestionRequest]!
+    active: Boolean
+}
+
+input QuestionRequest{
+    id: String!
+    propertyTypeId: String!
+    type: String
+    label: String
+    inputType: String
+    name: String
+    validations: [ValidationInputForProperty]
+    value: String
+    options: [String]
+}
+
+input ValidationInputForProperty{
+    name: String
+    validator: String
+    message: String
+}
+
+input PaginatedPropertyInput{
+    borrowerId: String
+    title: String
+    priceStart: Float
+    priceEnd: Float
+    area: String
+    pageSize: Int!
+    pageNo: Int!
+}
+
+input PropertyFilterDTO{
+    city: String
+    address: String
+    priceStart: Float
+    priceEnd: Float
+    propertyTypeTitle: String
+    pageSize: Int!
+    pageNo: Int!
+}

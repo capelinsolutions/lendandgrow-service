@@ -1,0 +1,45 @@
+# Send message with content and the recipientId 62ce957846f95307878cf8e1 => david64@mailinator.com
+mutation SEND_MESSAGE {
+    sendMessage(
+        data: { content: "Hello there", recipientId: "62ce957846f95307878cf8e1" }
+    ) {
+        message
+        status
+        code
+        data {
+            id
+            content
+            senderId
+            recipientId
+            sendAt
+            isRead
+        }
+    }
+}
+
+mutation MARK_ALL_NOTIFICATION_TO_READ {
+    markAllUnreadMessageToRead(senderId: "SENDER_ID"){
+        data
+        status
+        code
+        message
+    }
+}
+
+query GET_ALL_NOTIFICATION{
+    getAllNotifications {
+        message
+        code
+        status
+        data {
+            notifications{
+                senderName
+                senderId
+                content
+                count
+                sendAt
+            }
+            totalCount
+        }
+    }
+}

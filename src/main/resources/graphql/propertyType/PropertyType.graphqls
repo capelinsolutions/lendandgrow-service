@@ -1,0 +1,37 @@
+extend type Query {
+    getAllPropertyTypes:ListPropertyMessageType
+}
+
+extend type Mutation {
+    createPropertyType(input: PropertyTypeInput) : PropertyTypeMessage
+}
+
+type PropertyTypeMessage{
+    message: String
+    code: String
+    status: Int
+    data: PropertyType
+}
+
+type PropertyForm{
+    name: String
+    type: String
+    value: String
+}
+
+# Return Property currently used in Message
+type PropertyType{
+    propertyTypeId: String
+    title: String
+    description: String
+    iconUrl: String
+
+}
+
+
+type ListPropertyMessageType{
+    message: String
+    code: String
+    status: Int
+    data: [PropertyType]
+}

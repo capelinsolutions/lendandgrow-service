@@ -1,0 +1,137 @@
+# Get all borrowers
+query GET_ALL_BORROWER{
+    getAllBorrower
+    {
+        message
+        status
+        code
+        data{
+            userId
+            email
+            name
+            address
+            city
+            zip
+            state
+            country
+            contact
+            telephone
+            dob
+            gender
+            occupation
+            borrowerId
+            companyName
+            profileImageURL
+        }
+    }
+}
+
+# Get borrower by id
+query GET_BORROWER{
+    getBorrower
+    {
+        message
+        code
+        status
+        data{
+            userId
+            email
+            name
+            address
+            city
+            zip
+            state
+            country
+            contact
+            telephone
+            dob
+            gender
+            occupation
+            borrowerId
+            companyName
+            profileImageURL
+        }
+    }
+}
+
+# Update borrower by dto
+mutation UPDATE_BORROWER{
+    updateBorrower(
+        input:{
+            borrowerId: "62ce957846f95307878cf8e2"
+            userId: "62ce957846f95307878cf8e1"
+            name: "Emad Faarid"
+            address: "ABC 1234"
+            city: "Karachi"
+            zip: "1001"
+            state: "Sindh"
+            country: "Pakistan"
+            contact: "+923122603449"
+            telephone: "+021314131413"
+            dob: "2022-12-12"
+            gender: "Male"
+            companyName: "Vinncorp"
+            occupation: "SE"
+        }){
+        message
+        data{
+            userId
+            email
+            name
+            address
+            city
+            zip
+            state
+            country
+            contact
+            telephone
+            dob
+            gender
+            occupation
+            borrowerId
+            companyName
+            profileImageURL
+        }
+    }
+}
+
+# Get borrower by filtration
+query GET_BORROWER_LIST_BY_PAGINATION{
+    getBorrowerListByPagination(input: {
+        name: null
+        state: null
+        city: null
+        propertyTypeTitle: null
+        pageNo: 0
+        pageSize: 5
+    })
+    {
+        message
+        status
+        code
+        data{
+            borrowers{
+                userId
+                email
+                name
+                address
+                city
+                zip
+                state
+                country
+                contact
+                telephone
+                dob
+                gender
+                occupation
+                borrowerId
+                companyName
+                profileImageURL
+            }
+            pageNo
+            pageSize
+            noOfPages
+            totalRows
+        }
+    }
+}

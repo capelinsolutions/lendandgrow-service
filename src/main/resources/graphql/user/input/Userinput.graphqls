@@ -1,0 +1,10 @@
+input UserInput {
+    name: String!
+    email: String!
+    password: String!
+    userType: String!
+    city: String
+    country: String
+    contact: String
+    address: String
+}

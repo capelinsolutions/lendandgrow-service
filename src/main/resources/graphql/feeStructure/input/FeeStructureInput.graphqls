@@ -1,0 +1,5 @@
+input FeeStructureInput{
+    to : String
+    from : String
+    text : String
+}

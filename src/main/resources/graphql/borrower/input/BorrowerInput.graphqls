@@ -1,0 +1,26 @@
+input UpdateBorrowerInput{
+    borrowerId: String
+    userId: String
+    name: String
+    email: String
+    address: String
+    city: String
+    zip: String
+    state: String
+    country: String
+    contact: String
+    telephone: String
+    dob: Date
+    gender: String
+    companyName: String
+    occupation: String
+}
+
+input PaginatedBorrowerInput{
+    name: String
+    state: String
+    city: String
+    propertyTypeId: String
+    pageSize: Int!
+    pageNo: Int!
+}

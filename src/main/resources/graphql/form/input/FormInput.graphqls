@@ -1,0 +1,16 @@
+input FormInput{
+    type: String!
+    label: String!
+    inputType: String
+    name: String!
+    validations: [ValidationInput]
+    propertyTypeId: String
+    options: [String]
+    value: String
+}
+
+input ValidationInput{
+    name: String
+    validator: String
+    message: String
+}

@@ -1,0 +1,148 @@
+# Create form
+mutation CREATE_FORM{
+    createForm(input: {
+        propertyTypeId: "62ac2899f8d0a108e95d7294"
+        type: "input",
+        label: "Property Document(s)",
+        name: "document",
+        value: null,
+        validations: [
+            {
+                name: "document",
+                message: "Input document(s) of property should be a pdf",
+                validator: "pdf"
+            }
+        ],
+        options: null,
+        inputType: "file"
+    })
+    {
+        message
+        code
+        status
+        data {
+            id
+            label
+            inputType
+            name
+            validations {
+                name
+                validator
+                message
+            }
+            propertyTypeId
+            options
+            value
+        }
+    }
+}
+
+# Get all forms
+query GET_ALL_FORM{
+    getAllForm {
+        message
+        code
+        status
+        data {
+            id
+            label
+            inputType
+            name
+            validations {
+                name
+                validator
+                message
+            }
+            type
+            propertyTypeId
+            options
+            value
+        }
+    }
+}
+
+# Get all form by property type id
+query GET_ALL_FORM_BY_PROPERTY_TYPE_ID{
+    getAllFormByPropertyTypeId(input: "62ac1f8db82549177119d336")
+    {
+        message
+        code
+        status
+        data {
+            id
+            label
+            type
+            inputType
+            name
+            validations {
+                name
+                validator
+                message
+            }
+            propertyTypeId
+            options
+            value
+        }
+    }
+}
+
+# Get all forms and propertyType data w.r.t the list of form ids
+query GET_ALL_FORM_BY_LIST_OF_ID{
+    getAllFormByListOfId
+    {
+        message
+        code
+        status
+        data{
+            propertyType{
+                propertyTypeId
+                title
+                description
+                iconUrl
+            }
+            forms{
+                id
+                type
+                inputType
+                name
+                validations{
+                    name
+                    validator
+                    message
+                }
+                options
+            }
+        }
+    }
+}
+query GET_FORMS_BY_LIST_OF_FORMS{
+    getFormsByListOfForms(input:["62b5958a12c0f94a56c1494a","62b5978112c0f94a56c1494b"])
+    {
+        message
+        code
+        status
+        data {
+            propertyType{
+                propertyTypeId
+                title
+                description
+                iconUrl
+            }
+            forms{
+                id
+                label
+                type
+                inputType
+                name
+                validations {
+                    name
+                    validator
+                    message
+                }
+                propertyTypeId
+                options
+                value
+            }
+        }
+    }
+}

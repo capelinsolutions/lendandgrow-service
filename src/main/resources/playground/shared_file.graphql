@@ -1,0 +1,229 @@
+#Create shared file
+mutation CREATE_SHARED_FILE{
+    createSharedFile(input: {
+        propertyId: "62c41782b0940112e8875346"
+        emailsDocumentAccess:[
+            {
+                email:"tahir2@mailinator.com",
+                documentAccess:[
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=sample.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ"]
+                    },
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=sample - Copy.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ","DOWNLOAD"]
+                    }
+                ]
+            },
+            {
+                email:"junaid11@mailinator.com",
+                documentAccess:[
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=sample.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ"]
+                    },
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=sample - Copy.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ","DOWNLOAD"]
+                    }
+                ]
+            }
+
+        ]
+    }) {
+        message
+        code
+        status
+        data{
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+
+        }
+    }
+}
+
+# update shared file data
+mutation UPDATE_SHARED_FILE{
+    updateSharedFile(input: {
+        sharedFileId: "62fe2afca8106a4e56750c39"
+        propertyId: "62d688a58817646b6b862bce"
+        emailsDocumentAccess:[
+            {
+                email:"bbbbb@mailinator.com",
+                documentAccess:[
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=tahir.pdf&type=PROPERTY_FILE",
+                        accessType: ["sab kuch karlo","kuch nhi karo","Write"]
+                    },
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=merifile.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ"]
+                    }
+                ]
+            },
+            {
+                email:"mmmmm@mailinator.com",
+                documentAccess:[
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=sample.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ"]
+                    },
+                    {
+                        documentUrl: "http://localhost:8082/api/v1/property/download/filename=hello.pdf&type=PROPERTY_FILE",
+                        accessType: ["READ"]
+                    }
+                ]
+            }
+
+        ]
+    }) {
+        message
+        code
+        status
+        data{
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+        }
+    }
+}
+
+#Get all shared file
+query GET_ALL_SHARED_FILE{
+    getAllSharedFile{
+        message
+        code
+        status
+        data{
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+        }
+    }
+}
+
+#Get shared file by id
+query GET_SHARED_FILE_BY_ID{
+    getSharedFileById(input: "62fb67da82a3ed7831d5fb0d"){
+        message
+        code
+        status
+        data {
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+
+        }
+    }
+}
+
+# Get shared file by user email
+query GET_ALL_SHARED_FILE_BY_USER_EMAIL{
+    getAllSharedFileByUserEmail(input: "junaid11@mailinator.com"){
+        message
+        code
+        status
+        data {
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+
+        }
+    }
+}
+
+#Get shared file by property id
+query GET_SHARED_FILE_BY_PROPERTY_ID{
+    getSharedFileByPropertyId(input: "62c41782b0940112e8875346"){
+        message
+        code
+        status
+        data {
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+
+        }
+    }
+}
+
+# Get shared file by investor email and property Id
+query GET_SHARED_FILE_BY_INVESTOR_EMAIL_AND_PROPERTY_ID{
+    getSharedFileByInvestorEmailAndPropertyId(input:"62e8adf3553ff10721aeebd3")
+    {
+        message
+        code
+        status
+        data {
+            sharedFileId
+            property{
+                propertyId
+                description
+            }
+            emailsDocumentAccess{
+                email
+                documentAccess{
+                    documentUrl
+                    accessType
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,11 @@
+# Get all messages
+subscription{
+    getChatMessages{
+        id
+        content
+        senderId
+        recipientId
+        sendAt
+        isRead
+    }
+}

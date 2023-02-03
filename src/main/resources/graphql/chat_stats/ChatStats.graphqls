@@ -1,0 +1,36 @@
+extend type Query{
+    getAllChatHistory(pageNo: Int, pageSize: Int): PaginatedChatStatsResponse
+    getTotalNoOfContactedInvestor: NoOfInvestorResponse
+    getTotalNoOfContactedBorrower: NoOfInvestorResponse
+}
+
+type NoOfInvestorResponse{
+    status: Int
+    code: String
+    message: String
+    data: Float
+}
+
+type PaginatedChatStatsResponse{
+    status: Int
+    code: String
+    message: String
+    data: ChatStatsResponseWrapper
+}
+
+type ChatStatsResponseWrapper{
+    chatHistory: [ChatStatsResponse]
+    pageNo: Int
+    pageSize: Int
+    noOfPages: Int
+    totalRows: Int
+}
+
+type ChatStatsResponse{
+    senderId: String
+    name: String
+    picture: String
+    lastMessageAt: String
+    recipientId: String
+    content: String
+}

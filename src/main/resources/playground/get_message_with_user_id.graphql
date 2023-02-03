@@ -1,0 +1,11 @@
+# Get single message by message id
+subscription{
+    getChatMessageData{
+        id
+        content
+        recipientId
+        senderId
+        sendAt
+        isRead
+    }
+}
